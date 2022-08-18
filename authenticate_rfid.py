@@ -22,7 +22,7 @@ try:
 
 	id, text =  reader.read() # czytanie z sensora RFID
 
-	if(id == 876685318416): # jezeli ID karty wynosi tyle co podane, to zapal zielona diode LED
+	if(id == 876685318415): # jezeli ID karty wynosi tyle co podane, to zapal zielona diode LED
 		GPIO.output(8, GPIO.HIGH)
 		sleep(1)
 	else:
