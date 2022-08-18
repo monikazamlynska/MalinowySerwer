@@ -1,3 +1,7 @@
+# author: Monika Zamlynska
+# e-mail: monika.zamlynska@gmail.com
+# 2022-08-18
+
 #!/usr/bin/env python
 
 import RPi.GPIO as GPIO
