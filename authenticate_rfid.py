@@ -31,7 +31,7 @@ try:
 
 		# dodawanie logu do pliku
 		plik.write("\n")
-		print (datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
+		plik.write(datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
 		plik.write("AUTORYZACJA: [")
 		plik.write(str(id))
 		plik.write("]: ")
