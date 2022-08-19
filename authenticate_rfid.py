@@ -53,7 +53,6 @@ try:
 		plik.write(text)
 		plik.write("\n")
 
-
 		sleep(1)
 
 finally:
