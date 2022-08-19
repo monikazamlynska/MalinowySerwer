@@ -74,7 +74,7 @@ try:
 			(username, rfid, time, status))
 
 		connection.commit()
-		print("Rekord dodany pomyslenie")
+		print("Rekord dodany pomyslenie"))
 
 		sleep(1)
 
