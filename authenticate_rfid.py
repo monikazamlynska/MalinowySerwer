@@ -34,3 +34,5 @@ try:
 finally:
 
 	GPIO.cleanup()
+
+# zmiana monisia
