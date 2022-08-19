@@ -24,8 +24,6 @@ GPIO.setup(10, GPIO.OUT, initial = GPIO.LOW)
 
 reader = SimpleMFRC522() # deklaracja modulu do sensora RFID
 
-plik = open('rfid_login.log','a')
-
 try:
 
 	# Połączenie do istniejacej bazy danych
@@ -38,7 +36,7 @@ try:
 	# Testowanie polaczenia do bazy danych
 	cursor = connection.cursor()
 
-	id, text =  reader.read() # czytanie z sensora RFID
+	rfid, text =  reader.read() # czytanie z sensora RFID
 
 	if(id == 876685318415): # jezeli ID karty wynosi tyle co podane, to zapal zielona diode LED
 		GPIO.output(8, GPIO.HIGH)
@@ -46,16 +44,8 @@ try:
 
 		# dodawanie logu do pliku
 
-		#plik.write(datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
-		#plik.write("AUTORYZACJA:     <")
-		#plik.write(str(id))
-		#plik.write(">: ")
-		#plik.write(text)
-		#plik.write("\n")
-
 		username = text
 		time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-		rfid = id
 		status = 'AUTORYZOWANE'
 
 		# Dodawanie wpisu do bazy danych z logami
@@ -76,15 +66,8 @@ try:
 
 		# dodawanie logu do pliku:
 
-		#plik.write(datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
-		#plik.write("NIEAUTORYZOWANE: <")
-		#plik.write(str(id))
-		#plik.write(">: ")
-		#plik.write(text)
-		#plik.write("\n")
 		username = text
 		time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-		rfid = id
 		status = 'NIEAUTORYZOWANE'
 
 		cursor.execute("INSERT INTO rfid_login (ID, USERNAME, RFID, TIME, STATUS) VALUES (DEFAULT, %s, %s, %s, %s)", (username, rfid, time, status))
