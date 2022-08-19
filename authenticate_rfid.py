@@ -38,17 +38,6 @@ try:
 	# Testowanie polaczenia do bazy danych
 	cursor = connection.cursor()
 
-	# Wyswietlanie infomacji związanych z baza danych
-	print("PostgreSQL server information")
-	print(connection.get_dsn_parameters(), "\n")
-
-	# Wykonywanie jakiegos zapytania SQL (sprawdzenie wersji bazy)
-	cursor.execute("SELECT version();")
-
-	# Pobieranie wyniku
-	record = cursor.fetchone()
-	print("Jestes polaczony z - ", record, "\n")
-
 	id, text =  reader.read() # czytanie z sensora RFID
 
 	if(id == 876685318415): # jezeli ID karty wynosi tyle co podane, to zapal zielona diode LED
@@ -57,12 +46,29 @@ try:
 
 		# dodawanie logu do pliku
 
-		plik.write(datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
-		plik.write("AUTORYZACJA:     <")
-		plik.write(str(id))
-		plik.write(">: ")
-		plik.write(text)
-		plik.write("\n")
+		#plik.write(datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
+		#plik.write("AUTORYZACJA:     <")
+		#plik.write(str(id))
+		#plik.write(">: ")
+		#plik.write(text)
+		#plik.write("\n")
+
+		username = text
+		time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+		rfid = id
+        status = "AUTORYZOWANE"
+
+		# Dodawanie wpisu do bazy danych z logami
+
+		insert_query = """ INSERT INTO rfid_logs (TIME, USERNAME, RFID, STATUS) VALUES (time, username, rfid, status )"""
+
+		cursor.execute(insert_query)
+		connection.commit()
+		print("Rekord dodany pomyslenie")
+		# Fetch result
+		cursor.execute("SELECT * from rfid_logs")
+		record = cursor.fetchall()
+		print("Rekord: ", record)
 
 		sleep(1)
 	else:
@@ -71,12 +77,27 @@ try:
 
 		# dodawanie logu do pliku:
 
-		plik.write(datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
-		plik.write("NIEAUTORYZOWANE: <")
-		plik.write(str(id))
-		plik.write(">: ")
-		plik.write(text)
-		plik.write("\n")
+		#plik.write(datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
+		#plik.write("NIEAUTORYZOWANE: <")
+		#plik.write(str(id))
+		#plik.write(">: ")
+		#plik.write(text)
+		#plik.write("\n")
+
+        username = text
+		time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+		rfid = id
+        status = "NIEAUTORYZOWANE"
+
+		insert_query = """ INSERT INTO rfid_logs (TIME, USERNAME, RFID, STATUS) VALUES (time, username, rfid, status )"""
+
+		cursor.execute(insert_query)
+		connection.commit()
+		print("Rekord dodany pomyslenie")
+		# Fetch result
+		cursor.execute("SELECT * from rfid_logs")
+		record = cursor.fetchall()
+		print("Rekord: ", record)
 
 		sleep(1)
 
