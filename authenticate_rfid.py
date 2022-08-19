@@ -38,4 +38,4 @@ finally:
 
 	GPIO.cleanup()
 
-# zmiana monisia 4
+# zmiana monisia 5
