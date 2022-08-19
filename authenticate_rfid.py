@@ -44,6 +44,7 @@ try:
 
 		# dodawanie logu do pliku
 		plik.write("\n")
+		plik.write(datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
 		plik.write("NIEAUTORYZOWANE: [")
 		plik.write(str(id))
 		plik.write("]: ")
