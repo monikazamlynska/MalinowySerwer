@@ -27,14 +27,26 @@ try:
 	if(id == 876685318415): # jezeli ID karty wynosi tyle co podane, to zapal zielona diode LED
 		GPIO.output(8, GPIO.HIGH)
 		print("Witaj ", text,  "! Masz uprawnienia na wejscie do serwerowni")
+
+		# dodawanie logu do pliku
 		plik.write("\n")
+		plik.write("AUTORYZACJA: [")
 		plik.write(str(id))
-		plik.write(": ")
+		plik.write("]: ")
 		plik.write(text)
+
 		sleep(1)
 	else:
 		GPIO.output(10, GPIO.HIGH) # jezeli nie, to zapal czerwona diode LED
 		print("Niestety nie masz uprawnien na wejscie do serwerowni!!! Skontaktuj się z Administratorem")
+
+		# dodawanie logu do pliku
+		plik.write("\n")
+		plik.write("NIEAUTORYZOWANE: [")
+		plik.write(str(id))
+		plik.write("]: ")
+		plik.write(text)
+
 		sleep(1)
 
 finally:
