@@ -27,7 +27,7 @@ try:
 	if(id == 876685318415): # jezeli ID karty wynosi tyle co podane, to zapal zielona diode LED
 		GPIO.output(8, GPIO.HIGH)
 		print("Witaj ", text,  "! Masz uprawnienia na wejscie do serwerowni")
-		plik.write("Monika")
+		plik.write(text," ",id,"/n")
 		sleep(1)
 	else:
 		GPIO.output(10, GPIO.HIGH) # jezeli nie, to zapal czerwona diode LED
