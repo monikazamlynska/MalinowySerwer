@@ -60,7 +60,7 @@ try:
 
 		# Dodawanie wpisu do bazy danych z logami
 
-		curs.execute("INSERT INTO rfid_login (ID, USERNAME, RFID, TIME, STATUS) VALUES (DEFAULT, %s, %s, %s, %s)", (username, rfid, time, status))
+		cursor.execute("INSERT INTO rfid_login (ID, USERNAME, RFID, TIME, STATUS) VALUES (DEFAULT, %s, %s, %s, %s)", (username, rfid, time, status))
 
 		connection.commit()
 		print("Rekord dodany pomyslenie")
@@ -87,7 +87,7 @@ try:
 		rfid = id
 		status = 'NIEAUTORYZOWANE'
 
-		curs.execute("INSERT INTO rfid_login (ID, USERNAME, RFID, TIME, STATUS) VALUES (DEFAULT, %s, %s, %s, %s)", (username, rfid, time, status))
+		cursor.execute("INSERT INTO rfid_login (ID, USERNAME, RFID, TIME, STATUS) VALUES (DEFAULT, %s, %s, %s, %s)", (username, rfid, time, status))
 
 		connection.commit()
 		print("Rekord dodany pomyslenie")
