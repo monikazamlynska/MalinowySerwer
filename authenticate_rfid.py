@@ -55,7 +55,7 @@ try:
 		cursor.execute('INSERT INTO rfid_login ("ID", "USERNAME", "RFID", "TIME", "STATUS") VALUES (DEFAULT, %s, %s, %s, %s)', (username, rfid, time, status))
 
 		connection.commit()
-		print("Rekord dodany pomyslenie"))
+		print("Rekord dodany pomyslenie")
 
 		sleep(1)
 	else:
@@ -74,7 +74,7 @@ try:
 			(username, rfid, time, status))
 
 		connection.commit()
-		print("Rekord dodany pomyslenie"))
+		print("Rekord dodany pomyslenie")
 
 		sleep(1)
 
