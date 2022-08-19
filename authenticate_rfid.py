@@ -30,12 +30,13 @@ try:
 		print("Witaj ", text,  "! Masz uprawnienia na wejscie do serwerowni")
 
 		# dodawanie logu do pliku
-		plik.write("\n")
+
 		plik.write(datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
 		plik.write("AUTORYZACJA:     <")
 		plik.write(str(id))
 		plik.write(">: ")
 		plik.write(text)
+		plik.write("\n")
 
 
 		sleep(1)
@@ -44,12 +45,13 @@ try:
 		print("Niestety nie masz uprawnien na wejscie do serwerowni!!! Skontaktuj się z Administratorem")
 
 		# dodawanie logu do pliku:
-		plik.write("\n")
+
 		plik.write(datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
 		plik.write("NIEAUTORYZOWANE: <")
 		plik.write(str(id))
 		plik.write(">: ")
 		plik.write(text)
+		plik.write("\n")
 
 
 		sleep(1)
