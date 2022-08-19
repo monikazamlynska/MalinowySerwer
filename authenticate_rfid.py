@@ -22,8 +22,6 @@ reader = SimpleMFRC522() # deklaracja modulu do sensora RFID
 
 plik = open('rfid_login.log','a')
 
-dzisiejsza_data = datetime.datetime.now()
-
 try:
 
 	id, text =  reader.read() # czytanie z sensora RFID
@@ -34,7 +32,7 @@ try:
 
 		# dodawanie logu do pliku
 		plik.write("\n")
-		print (time.strftime("[ %Y-%m-%d %H:%M]    "))
+		print (datetime.datetime.now().strftime("[%Y-%m-%d %H:%M]     "))
 		plik.write("AUTORYZACJA: [")
 		plik.write(str(id))
 		plik.write("]: ")
