@@ -55,31 +55,26 @@ try:
 		cursor.execute('INSERT INTO rfid_login ("ID", "USERNAME", "RFID", "TIME", "STATUS") VALUES (DEFAULT, %s, %s, %s, %s)', (username, rfid, time, status))
 
 		connection.commit()
-		print("Rekord dodany pomyslenie")
-		# Fetch result
-		# cursor.execute('SELECT * from rfid_logs')
-		# record = cursor.fetchall()
-		# print("Rekord: ", record)
+		print("Rekord dodany pomyslenie"))
 
 		sleep(1)
 	else:
 		GPIO.output(10, GPIO.HIGH) # jezeli nie, to zapal czerwona diode LED
 		print("Niestety nie masz uprawnien na wejscie do serwerowni!!! Skontaktuj się z Administratorem")
 
-		# dodawanie logu do pliku:
-
 		username = text
 		time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 		status = 'NIEAUTORYZOWANE'
+		rfid = id
 
-		cursor.execute('INSERT INTO rfid_login ("ID", "USERNAME", "RFID", "TIME", "STATUS") VALUES (DEFAULT, %s, %s, %s, %s)', (username, rfid, time, status))
+		# dodawanie logu do pliku:
+
+		cursor.execute(
+			'INSERT INTO rfid_login ("ID", "USERNAME", "RFID", "TIME", "STATUS") VALUES (DEFAULT, %s, %s, %s, %s)',
+			(username, rfid, time, status))
 
 		connection.commit()
 		print("Rekord dodany pomyslenie")
-		# Fetch result
-		# cursor.execute('SELECT * from rfid_logs')
-		# record = cursor.fetchall()
-		# print("Rekord: ", record)
 
 		sleep(1)
 
