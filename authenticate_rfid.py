@@ -18,7 +18,7 @@ GPIO.setup(10, GPIO.OUT, initial = GPIO.LOW)
 
 reader = SimpleMFRC522() # deklaracja modulu do sensora RFID
 
-plik = open('rfid_login.log','w')
+plik = open('rfid_login.log','a')
 
 try:
 
