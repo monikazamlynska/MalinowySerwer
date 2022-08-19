@@ -32,7 +32,7 @@ try:
 								  host="127.0.0.1",
 								  port="5432",
 								  database="rfid_logs",
-								  options="-c search_path=dbo,public)
+								  options="-c search_path=dbo,public")
 
 	# Testowanie polaczenia do bazy danych
 	cursor = connection.cursor()
