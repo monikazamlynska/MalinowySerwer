@@ -60,7 +60,7 @@ try:
 
 		# Dodawanie wpisu do bazy danych z logami
 
-		insert_query = """ INSERT INTO rfid_logs (TIME, USERNAME, RFID, STATUS) VALUES (time, username, rfid, status )"""
+		insert_query = """ INSERT INTO rfid_login("ID", "USERNAME", "RFID", "TIME", "STATUS") VALUES (DEFAULT, username', rfid, time, status);"""
 
 		cursor.execute(insert_query)
 		connection.commit()
@@ -88,7 +88,7 @@ try:
 		rfid = id
 		status = "NIEAUTORYZOWANE"
 
-		insert_query = """ INSERT INTO rfid_logs (TIME, USERNAME, RFID, STATUS) VALUES (time, username, rfid, status )"""
+		insert_query = """ INSERT INTO rfid_login("ID", "USERNAME", "RFID", "TIME", "STATUS") VALUES (DEFAULT, username', rfid, time, status);"""
 
 		cursor.execute(insert_query)
 		connection.commit()
