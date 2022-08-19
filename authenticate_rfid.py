@@ -52,7 +52,7 @@ try:
 
 		# Dodawanie wpisu do bazy danych z logami
 
-		cursor.execute("INSERT INTO rfid_login (ID, USERNAME, RFID, TIME, STATUS) VALUES (DEFALUT, %s, %s, %s, %s)", (username, rfid, time, status))
+		cursor.execute('INSERT INTO rfid_login ("ID", "USERNAME", "RFID", "TIME", "STATUS") VALUES (DEFALUT, %s, %s, %s, %s)', (username, rfid, time, status))
 
 		connection.commit()
 		print("Rekord dodany pomyslenie")
@@ -72,7 +72,7 @@ try:
 		time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 		status = 'NIEAUTORYZOWANE'
 
-		cursor.execute("INSERT INTO rfid_login (ID, USERNAME, RFID, TIME, STATUS) VALUES (DEFALUT, %s, %s, %s, %s)", (username, rfid, time, status))
+		cursor.execute('INSERT INTO rfid_login ("ID", "USERNAME", "RFID", "TIME", "STATUS") VALUES (DEFALUT, %s, %s, %s, %s)', (username, rfid, time, status))
 
 		connection.commit()
 		print("Rekord dodany pomyslenie")
