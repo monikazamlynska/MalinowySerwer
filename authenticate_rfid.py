@@ -7,8 +7,7 @@
 import RPi.GPIO as GPIO # import biblioteki do GPIO
 from mfrc522 import SimpleMFRC522 # import biblioteki do sensora RFID
 from time import sleep # import dodatków do sleep'owania procesów
-
-import time # importowanie daty i godziny
+import datetime
 
 GPIO.setwarnings(False)
 
