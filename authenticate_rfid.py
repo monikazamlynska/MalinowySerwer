@@ -111,4 +111,4 @@ finally:
 		connection.close()
 		print("Polaczenie z baza PostgreSQL zostalo zamkniete")
 
-
+# poprawki
