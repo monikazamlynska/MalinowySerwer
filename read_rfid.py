@@ -14,7 +14,7 @@ try:
 
 	id, text =  reader.read() # pobierz wartosci z karty RFID
 	print("Numer ID: {:.1f} " .format(id)) # wypisz wartosci ID z karty RFID
-	print("Wlasciciel: " text) # wypisz wartosci tekstowe  z karty RFID
+	print("Wlasciciel: ", text) # wypisz wartosci tekstowe  z karty RFID
 
 finally:
 

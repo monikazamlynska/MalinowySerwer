@@ -57,9 +57,9 @@ try:
 		connection.commit()
 		print("Rekord dodany pomyslenie")
 		# Fetch result
-		cursor.execute('SELECT * from rfid_logs')
-		record = cursor.fetchall()
-		print("Rekord: ", record)
+		# cursor.execute('SELECT * from rfid_logs')
+		# record = cursor.fetchall()
+		# print("Rekord: ", record)
 
 		sleep(1)
 	else:
@@ -77,9 +77,9 @@ try:
 		connection.commit()
 		print("Rekord dodany pomyslenie")
 		# Fetch result
-		cursor.execute('SELECT * from rfid_logs')
-		record = cursor.fetchall()
-		print("Rekord: ", record)
+		# cursor.execute('SELECT * from rfid_logs')
+		# record = cursor.fetchall()
+		# print("Rekord: ", record)
 
 		sleep(1)
 
