@@ -29,7 +29,7 @@ try:
 		print("Witaj ", text,  "! Masz uprawnienia na wejscie do serwerowni")
 		plik.write(text)
 		plik.write(": ")
-		plik.write(id)
+		plik.write(str(id))
 		plik.write("/n")
 		sleep(1)
 	else:
