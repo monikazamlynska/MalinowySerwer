@@ -36,7 +36,7 @@ try:
 	# Testowanie polaczenia do bazy danych
 	cursor = connection.cursor()
 
-	rfid, text =  reader.read() # czytanie z sensora RFID
+	id, text =  reader.read() # czytanie z sensora RFID
 
 	if(id == 876685318415): # jezeli ID karty wynosi tyle co podane, to zapal zielona diode LED
 		GPIO.output(8, GPIO.HIGH)
@@ -47,10 +47,11 @@ try:
 		username = text
 		time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 		status = 'AUTORYZOWANE'
+		rfid = id
 
 		# Dodawanie wpisu do bazy danych z logami
 
-		cursor.execute("INSERT INTO rfid_login ("NR", "USERNAME", RFID, TIME, STATUS) VALUES (DEFAULT, %s, %s, %s, %s)", (username, rfid, time, status))
+		cursor.execute("INSERT INTO rfid_login (NR, USERNAME, RFID, TIME, STATUS) VALUES (DEFAULT, %s, %s, %s, %s)", (username, rfid, time, status))
 
 		connection.commit()
 		print("Rekord dodany pomyslenie")
