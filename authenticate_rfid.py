@@ -56,7 +56,7 @@ try:
 		username = text
 		time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 		rfid = id
-        status = "AUTORYZOWANE"
+		status = "AUTORYZOWANE"
 
 		# Dodawanie wpisu do bazy danych z logami
 
@@ -83,11 +83,10 @@ try:
 		#plik.write(">: ")
 		#plik.write(text)
 		#plik.write("\n")
-
-        username = text
+		username = text
 		time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 		rfid = id
-        status = "NIEAUTORYZOWANE"
+		status = "NIEAUTORYZOWANE"
 
 		insert_query = """ INSERT INTO rfid_logs (TIME, USERNAME, RFID, STATUS) VALUES (time, username, rfid, status )"""
 
