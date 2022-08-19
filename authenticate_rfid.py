@@ -9,6 +9,11 @@ from mfrc522 import SimpleMFRC522 # import biblioteki do sensora RFID
 from time import sleep # import dodatków do sleep'owania procesów
 import datetime
 
+# polaczenie z baza danych
+
+import psycopg2 # biblioteka do polaczenia z psql
+from psycopg2 import Error # biblioteka do obslugi bledow w psql
+
 GPIO.setwarnings(False)
 
 # deklarowanie numerów pin
@@ -22,6 +27,27 @@ reader = SimpleMFRC522() # deklaracja modulu do sensora RFID
 plik = open('rfid_login.log','a')
 
 try:
+
+	# Połączenie do istniejacej bazy danych
+	connection = psycopg2.connect(user="admin",
+								  password="Stronk2k3",
+								  host="127.0.0.1",
+								  port="5432",
+								  database="rfid_logs")
+
+	# Testowanie polaczenia do bazy danych
+	cursor = connection.cursor()
+
+	# Wyswietlanie infomacji związanych z baza danych
+	print("PostgreSQL server information")
+	print(connection.get_dsn_parameters(), "\n")
+
+	# Wykonywanie jakiegos zapytania SQL (sprawdzenie wersji bazy)
+	cursor.execute("SELECT version();")
+
+	# Pobieranie wyniku
+	record = cursor.fetchone()
+	print("Jestes polaczony z - ", record, "\n")
 
 	id, text =  reader.read() # czytanie z sensora RFID
 
@@ -37,7 +63,6 @@ try:
 		plik.write(">: ")
 		plik.write(text)
 		plik.write("\n")
-
 
 		sleep(1)
 	else:
@@ -55,8 +80,15 @@ try:
 
 		sleep(1)
 
+except (Exception, Error) as error:
+    print("Wystapil blad w trakcie polaczenia z bazą PostgreSQL", error)
+
 finally:
 
 	GPIO.cleanup()
+	if (connection):
+		cursor.close()
+		connection.close()
+		print("Polaczenie z baza PostgreSQL zostalo zamkniete")
 
-# zmiana monisia 5
+
